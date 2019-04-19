@@ -390,13 +390,27 @@ public class BootApplicationTests {
 INFO 18960 --- [           main] com.wrial.boot.BootApplicationTests      : SpringXml--->true
 
 ```
+### 在properties中的骚操作
+> 在Spring中有没有感觉${}无处不再，当然，在配置文件中也可以用，接下来我们看看吧
+使用${}在配置文件中生成随机数，配置项的拼接,如下图
 
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190419180324333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyNjA1OTY4,size_16,color_FFFFFF,t_70)
+简单的使用：
+```
+user.map.k1=${random.int}
+user.list={123,456}
+user.map.k2=2
+user.username=张飞${user.map.k1}
+```
+
+结果（有些信息是在其他文件中配置的不用管）
+```
+2019-04-19 18:05:04.388  INFO 9160 --- [           main] com.wrial.boot.BootApplicationTests      : UserInfo->User(username=张飞1002747015, age=null, birth=null, man=null, list=[{123, 456}], map={k1=-454305280, k2=2}, moreInfo=null)
+```
 
 <hr>
 
-SpringBoot的配置方式掌握了吗？在我的博客中也有对Spring配置的详解后的配置方式，如果有需要的话可以去看看哦.
-
-Spring中的配置是必须是单个的通过@Value来注入。
+SpringBoot的配置方式掌握了吗？
 
 [博客链接](https://blog.csdn.net/qq_42605968)：可能有写不对的地方（应该还挺多的，欢迎指出，这也是一个检测有没有真正掌握知识的方法）。
 
